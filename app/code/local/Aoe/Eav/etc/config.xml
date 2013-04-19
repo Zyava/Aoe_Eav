@@ -7,9 +7,11 @@
     </modules>
     <global>
         <models>
-            <aoe_eav>
-                <class>Aoe_Eav_Model</class>
-            </aoe_eav>
+            <eav>
+                <rewrite>
+                    <config>Aoe_Eav_Model_Config</config>
+                </rewrite>
+            </eav>
         </models>
     </global>
 </config>
