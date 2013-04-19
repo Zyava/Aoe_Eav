@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aoe_Eav>
+            <version>0.1.0</version>
+        </Aoe_Eav>
+    </modules>
+    <global>
+        <models>
+            <aoe_eav>
+                <class>Aoe_Eav_Model</class>
+            </aoe_eav>
+        </models>
+    </global>
+</config>
