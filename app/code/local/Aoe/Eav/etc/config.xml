@@ -7,11 +7,34 @@
     </modules>
     <global>
         <models>
+            <aoe_eav>
+                <class>Aoe_Eav_Model</class>
+            </aoe_eav>
             <eav>
                 <rewrite>
                     <config>Aoe_Eav_Model_Config</config>
                 </rewrite>
             </eav>
         </models>
+        <events>
+            <eav_entity_attribute_set_save_after>
+                <observers>
+                    <aoe_eav>
+                        <type>singleton</type>
+                        <class>aoe_eav/observer</class>
+                        <method>cleanEavCache</method>
+                    </aoe_eav>
+                </observers>
+            </eav_entity_attribute_set_save_after>
+            <eav_entity_attribute_set_delete_after>
+                <observers>
+                    <aoe_eav>
+                        <type>singleton</type>
+                        <class>aoe_eav/observer</class>
+                        <method>cleanEavCache</method>
+                    </aoe_eav>
+                </observers>
+            </eav_entity_attribute_set_delete_after>
+        </events>
     </global>
 </config>
