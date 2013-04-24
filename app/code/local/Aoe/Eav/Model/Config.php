@@ -306,7 +306,10 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
         }
 
         if (!isset($this->_attributes[$entityTypeCode][$code])) {
-            $attribute = false;
+            // backward compatibility with attributes which are absent in db but present in xml config for some reason
+            // for example type_id attribute in app/code/core/Mage/Sales/etc/config.xml
+            $attribute = Mage::getModel($entityType->getAttributeModel())
+                ->setAttributeCode($code);
         } else {
             $attribute = $this->_attributes[$entityTypeCode][$code];
             $attribute->setEntityType($entityType);
