@@ -357,7 +357,9 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
         }
         Varien_Profiler::stop('EAV: ' . __METHOD__);
 
-        return $attributes;
+        // it might happen that entity type doesn't have attributes (some custom one) or
+        // there are no attributes in attribute set
+        return empty($attributes) ? array() : $attributes;
     }
 
     /**
