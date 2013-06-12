@@ -33,6 +33,23 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
     protected $_attributes = null;
 
     /**
+     * Check EAV cache availability
+     *
+     * @return bool
+     */
+    protected function _isCacheEnabled()
+    {
+        if ($this->_isCacheEnabled === null) {
+            if (!Mage::isInstalled() || Mage::app()->getUpdateMode() == true) {
+                $this->_isCacheEnabled = false;
+            } else {
+                $this->_isCacheEnabled = Mage::app()->useCache('eav');
+            }
+        }
+        return $this->_isCacheEnabled;
+    }
+
+    /**
      * Load data from cache
      *
      * @param string $cacheId
